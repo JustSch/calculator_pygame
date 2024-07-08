@@ -34,8 +34,9 @@ second_num = 0
 #Handle divide by zero error?
 #Limit number of numbers on the screen?
 
-#decimals? convert answer to float and add (input_num * (1/x)) tenth needs to change to hundredth/ thousandth?
-#where begins as 10 then is multiplied by ten as more decimals are given
+#decimals? use flag to set decimal mode
+# convert answer to float and add (input_num * (1/x)) tenth needs to change to hundredth/ thousandth?
+# where x begins as 10 then is multiplied by ten as more parts of the decimal number are given
 
 display_num = 0 #will not == answer when addition/subtraction/etc(operation) is triggered
 answer = 0
