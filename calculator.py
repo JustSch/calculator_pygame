@@ -6,11 +6,27 @@ pygame.init()#needed to initialize font
 SCREEN_HEIGHT = 500
 SCREEN_WIDTH = 800
 
-addition = 0
-subtraction = 0
-multiplication = 0
-division = 0
-display_num = 0
+addition = False
+subtraction = False
+multiplication = False
+division = False
+second_num = 0
+
+#flags to switch it and = button to clear flags
+#check if operations are false before allowing input to answer and display num
+#if any of the operations are true:
+# -clear displaynum
+# -have displaynum = secondnum
+# -allow for input of second num after operation is pressed
+# - clear flags for all other operations when an operation is pressed
+# -when = button is pressed have operation done with answer and secondnum (no flags cleared)
+# -displaynum will be changed to answer 
+# if another operation is pressed operation between answer and secondnum will occur (flags still active since no clear)
+# -secondnum will be cleared and new input can be given
+# c button will clear all flags as well as answer, secondnum and displaynum
+
+display_num = 0 #will not == answer when addition/subtraction/etc(operation) is triggered
+answer = 0
 
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption('Pygame Calculator')
@@ -58,6 +74,11 @@ calculator_button_9 = button.Button(220,300,calculator_button_9_img,2)
 calculator_button_0_img = pygame.image.load('calculator_assets/calculator_button_0.png').convert_alpha()
 calculator_button_0 = button.Button(70,400,calculator_button_0_img,2)
 
+text_font = pygame.font.SysFont(None, 70,bold = True, italic=True)
+def draw_text(text, font, text_color, x, y):
+    img = font.render(text, True, text_color)
+    screen.blit(img, (x, y))
+
 while run:
     
     screen.fill((202, 228, 241))
@@ -72,7 +93,14 @@ while run:
     calculator_button_6.draw(screen)
     calculator_button_7.draw(screen)
     calculator_button_8.draw(screen)
-    calculator_button_9.draw(screen)
+
+    if calculator_button_9.draw(screen):
+        if display_num == 0:
+            display_num = 9
+        else:
+            display_num = display_num * 10 + 9
+
+    draw_text(str(display_num),text_font,(0,0,0),50,10)
     for event in pygame.event.get():
 
         
