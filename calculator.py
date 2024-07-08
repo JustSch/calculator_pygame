@@ -12,18 +12,26 @@ multiplication = False
 division = False
 second_num = 0
 
-#flags to switch it and = button to clear flags
-#check if operations are false before allowing input to answer and display num
-#if any of the operations are true:
+#check if no operations are true:
+# then allow input to answer and set display num to answer
+
+#when operation is pressed:
+#check if another operation is true then operation between answer and secondnum will occur 
+#(flags still active since no clear)
+# -then clear previous flag and set new flag
+
+# then
 # -clear displaynum
 # -have displaynum = secondnum
-# -allow for input of second num after operation is pressed
-# - clear flags for all other operations when an operation is pressed
-# -when = button is pressed have operation done with answer and secondnum (no flags cleared)
+# -allow for input of second num 
+
+#when = button is pressed have operation done with answer and secondnum (no flags cleared)
 # -displaynum will be changed to answer 
-# if another operation is pressed operation between answer and secondnum will occur (flags still active since no clear)
-# -secondnum will be cleared and new input can be given
-# c button will clear all flags as well as answer, secondnum and displaynum
+#c button will clear all flags as well as answer, secondnum and displaynum
+#have operations in seperate functions that are called when buttons are pressed
+#clear and = are operations too
+
+#Handle divide by zero error?
 
 display_num = 0 #will not == answer when addition/subtraction/etc(operation) is triggered
 answer = 0
@@ -95,6 +103,7 @@ while run:
     calculator_button_8.draw(screen)
 
     if calculator_button_9.draw(screen):
+        print('9 pressed')
         if display_num == 0:
             display_num = 9
         else:
