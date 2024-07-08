@@ -32,6 +32,10 @@ second_num = 0
 #clear and = are operations too but function differently from the others
 
 #Handle divide by zero error?
+#Limit number of numbers on the screen?
+
+#decimals? convert answer to float and add (input_num * (1/x)) tenth needs to change to hundredth/ thousandth?
+#where begins as 10 then is multiplied by ten as more decimals are given
 
 display_num = 0 #will not == answer when addition/subtraction/etc(operation) is triggered
 answer = 0
