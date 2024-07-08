@@ -29,7 +29,7 @@ second_num = 0
 # -displaynum will be changed to answer 
 #c button will clear all flags as well as answer, secondnum and displaynum
 #have operations in seperate functions that are called when buttons are pressed
-#clear and = are operations too
+#clear and = are operations too but function differently from the others
 
 #Handle divide by zero error?
 
