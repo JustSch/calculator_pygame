@@ -14,22 +14,23 @@ second_num = 0
 
 #pt 2 slides should be algorithm (continue button placement too)
 #check if no operations are true:
-# then allow input to answer and set display num to answer
+# then allow input to first_num and set display num to first_num
 
 #when operation is pressed:
-#check if another operation is true then operation between answer and secondnum will occur 
+#check if another operation is true then operation between first_num and secondnum will occur 
 #(flags still active since no clear)
 # -then clear previous flag and set new flag
 
 # then
-# -set answer to display num
+# -set first_num to display num
 # -clear displaynum
-# -displaynum will allow for second operand
-# -operation later will be done on answer and displaynum
+# -have displaynum = secondnum
+# -allow for input of second num 
+# -operation later will be done on first_num and second_num
 
-#when = button is pressed have operation done with answer and displaynum (no flags cleared)
-# -displaynum will be changed to answer 
-#c button will clear all flags as well as answer, secondnum and displaynum
+#when = button is pressed have operation done with first_num and displaynum (no flags cleared)
+# -displaynum will be changed to first_num 
+#c button will clear all flags as well as first_num, secondnum and displaynum
 #have operations in seperate functions that are called when buttons are pressed
 #clear and = are operations too but function differently from the others
 
@@ -37,11 +38,11 @@ second_num = 0
 #Limit number of numbers on the screen?
 
 #decimals? use flag to set decimal mode
-# convert answer to float and add (input_num * (1/x)) tenth needs to change to hundredth/ thousandth?
+# convert first_num to float and add (input_num * (1/x)) tenth needs to change to hundredth/ thousandth?
 # where x begins as 10 then is multiplied by ten as more parts of the decimal number are given
 
-display_num = 0 #will not == answer when addition/subtraction/etc(operation) is triggered
-answer = 0
+display_num = 0 #will not == first_num when addition/subtraction/etc(operation) is triggered
+first_num = 0
 
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption('Pygame Calculator')
@@ -196,7 +197,7 @@ while run:
         subtraction = False
         multiplication = False
         division = False
-        answer = 0
+        first_num = 0
 
 
     if calculator_button_10.draw(screen):
@@ -207,7 +208,8 @@ while run:
         subtraction = False
         multiplication = False
         division = False
-        answer = display_num
+        first_num = display_num
+        second_num = 0
         display_num = 0
 
     calculator_button_11.draw(screen)
@@ -217,8 +219,22 @@ while run:
         # if op_pressed:
         #  do_op # for each operation
         print('Equals pressed')
+
+        if second_num == 0:
+            second_num = display_num
+
         if addition:
-            display_num = answer + display_num
+            first_num = first_num + second_num
+            display_num = first_num
+        if subtraction:
+            first_num = first_num - second_num
+            display_num = first_num
+        if multiplication:
+            first_num = first_num * second_num
+            display_num = first_num
+        if division:
+            first_num = first_num / second_num
+            display_num = first_num
 
     # calculator_button_16.draw(screen)
     # calculator_button_10.draw(screen)
