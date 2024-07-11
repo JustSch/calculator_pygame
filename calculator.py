@@ -122,23 +122,57 @@ while run:
     
     screen.fill((202, 228, 241))
     clock.tick(60)
-
+    #do buttons as if statments then dictionary later
     calculator_frame.draw(screen)
-    calculator_button_1.draw(screen)
-    calculator_button_2.draw(screen)
-    calculator_button_3.draw(screen)
-    calculator_button_4.draw(screen)
-    calculator_button_5.draw(screen)
-    calculator_button_6.draw(screen)
-    calculator_button_7.draw(screen)
-    calculator_button_8.draw(screen)
-    calculator_button_0.draw(screen)
-    calculator_button_16.draw(screen)
-    calculator_button_10.draw(screen)
-    calculator_button_11.draw(screen)
-    calculator_button_14.draw(screen)
-    calculator_button_13.draw(screen)
-    calculator_button_12.draw(screen)
+    if calculator_button_1.draw(screen):
+        print('1 pressed')
+        if display_num == 0:
+            display_num = 1
+        else:
+            display_num = display_num * 10 + 1
+    if calculator_button_2.draw(screen):
+        #can put these lines into its own function with number passed in
+        print('2 pressed')
+        if display_num == 0:
+            display_num = 2
+        else:
+            display_num = display_num * 10 + 2
+    if calculator_button_3.draw(screen):
+        print('3 pressed')
+        if display_num == 0:
+            display_num = 3
+        else:
+            display_num = display_num * 10 + 3
+    if calculator_button_4.draw(screen):
+        print('4 pressed')
+        if display_num == 0:
+            display_num = 4
+        else:
+            display_num = display_num * 10 + 4
+    if calculator_button_5.draw(screen):
+        print('5 pressed')
+        if display_num == 0:
+            display_num = 5
+        else:
+            display_num = display_num * 10 + 5
+    if calculator_button_6.draw(screen):
+        print('6 pressed')
+        if display_num == 0:
+            display_num = 6
+        else:
+            display_num = display_num * 10 + 6
+    if calculator_button_7.draw(screen):
+        print('7 pressed')
+        if display_num == 0:
+            display_num = 7
+        else:
+            display_num = display_num * 10 + 7
+    if calculator_button_8.draw(screen):
+        print('8 pressed')
+        if display_num == 0:
+            display_num = 8
+        else:
+            display_num = display_num * 10 + 8
 
     if calculator_button_9.draw(screen):
         print('9 pressed')
@@ -146,6 +180,38 @@ while run:
             display_num = 9
         else:
             display_num = display_num * 10 + 9
+
+    if calculator_button_0.draw(screen):
+        print('0 pressed')
+        if display_num == 0:
+            display_num = 0
+        else:
+            display_num = display_num * 10 + 0
+
+    if calculator_button_16.draw(screen):
+        print('Clear pressed')
+        display_num = 0
+        addition = False
+        subtraction = False
+        multiplication = False
+        division = False
+        answer = 0
+
+
+    calculator_button_10.draw(screen)
+    calculator_button_11.draw(screen)
+    calculator_button_14.draw(screen)
+    calculator_button_13.draw(screen)
+    calculator_button_12.draw(screen)
+
+    # calculator_button_16.draw(screen)
+    # calculator_button_10.draw(screen)
+    # calculator_button_11.draw(screen)
+    # calculator_button_14.draw(screen)
+    # calculator_button_13.draw(screen)
+    # calculator_button_12.draw(screen)
+
+    
 
     draw_text(str(display_num),text_font,(0,0,0),50,10)
     for event in pygame.event.get():
