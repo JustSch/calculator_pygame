@@ -121,16 +121,18 @@ def draw_text(text, font, text_color, x, y):
     screen.blit(img, (x, y))
 
 def do_calculation(first_num, second_num,addition,subtraction,multiplication,division):
-        answer = 0
+        
         if addition:
-           answer = first_num + second_num
+           first_num = first_num + second_num
         if subtraction:
-            answer = first_num - second_num
+            first_num = first_num - second_num
         if multiplication:
-            answer = first_num * second_num
+            first_num = first_num * second_num
         if division:
-            answer = first_num / second_num
-        return answer
+            #handle division by zero error here
+            first_num = first_num / second_num
+        
+        return first_num
         
 while run:
     
@@ -214,8 +216,11 @@ while run:
 
     if calculator_button_10.draw(screen):
         print('Plus pressed')
-        # if op_pressed:
-        #  do_op
+        if first_num == 0:
+            first_num = display_num
+        elif second_num == 0:
+            second_num = display_num
+        display_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
         addition = True
         subtraction = False
         multiplication = False
@@ -224,9 +229,49 @@ while run:
         second_num = 0
         display_num = 0
 
-    calculator_button_11.draw(screen)
-    calculator_button_14.draw(screen)
-    calculator_button_13.draw(screen)
+    if calculator_button_11.draw(screen):
+        print('Minus pressed')
+        if first_num == 0:
+            first_num = display_num
+        elif second_num == 0:
+            second_num = display_num
+        display_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
+        addition = False
+        subtraction = True
+        multiplication = False
+        division = False
+        first_num = display_num
+        second_num = 0
+        display_num = 0
+    if calculator_button_14.draw(screen):
+        print('Times pressed')
+        if first_num == 0:
+            first_num = display_num
+        elif second_num == 0:
+            second_num = display_num
+        display_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
+        addition = False
+        subtraction = False
+        multiplication = True
+        division = False
+        first_num = display_num
+        second_num = 0
+        display_num = 0
+
+    if calculator_button_13.draw(screen):
+        print('Divide pressed')
+        if first_num == 0:
+            first_num = display_num
+        elif second_num == 0:
+            second_num = display_num
+        display_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
+        addition = False
+        subtraction = False
+        multiplication = False
+        division = True
+        first_num = display_num
+        second_num = 0
+        display_num = 0
     if calculator_button_12.draw(screen):
         # if op_pressed:
         #  do_op # for each operation
