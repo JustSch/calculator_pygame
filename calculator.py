@@ -22,11 +22,12 @@ second_num = 0
 # -then clear previous flag and set new flag
 
 # then
+# -set answer to display num
 # -clear displaynum
-# -have displaynum = secondnum
-# -allow for input of second num 
+# -displaynum will allow for second operand
+# -operation later will be done on answer and displaynum
 
-#when = button is pressed have operation done with answer and secondnum (no flags cleared)
+#when = button is pressed have operation done with answer and displaynum (no flags cleared)
 # -displaynum will be changed to answer 
 #c button will clear all flags as well as answer, secondnum and displaynum
 #have operations in seperate functions that are called when buttons are pressed
@@ -198,11 +199,26 @@ while run:
         answer = 0
 
 
-    calculator_button_10.draw(screen)
+    if calculator_button_10.draw(screen):
+        print('Plus pressed')
+        # if op_pressed:
+        #  do_op
+        addition = True
+        subtraction = False
+        multiplication = False
+        division = False
+        answer = display_num
+        display_num = 0
+
     calculator_button_11.draw(screen)
     calculator_button_14.draw(screen)
     calculator_button_13.draw(screen)
-    calculator_button_12.draw(screen)
+    if calculator_button_12.draw(screen):
+        # if op_pressed:
+        #  do_op # for each operation
+        print('Equals pressed')
+        if addition:
+            display_num = answer + display_num
 
     # calculator_button_16.draw(screen)
     # calculator_button_10.draw(screen)
