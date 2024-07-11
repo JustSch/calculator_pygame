@@ -10,7 +10,13 @@ addition = False
 subtraction = False
 multiplication = False
 division = False
+equals =  False #keep track of if calculation was performed yet or not
+                #needed incase equal sign is pressed before next calculation
+
+first_num = 0
 second_num = 0
+
+display_num = 0
 
 #pt 2 slides should be algorithm (continue button placement too)
 
@@ -42,8 +48,7 @@ second_num = 0
 # convert first_num to float and add (input_num * (1/x)) tenth needs to change to hundredth/ thousandth?
 # where x begins as 10 then is multiplied by ten as more parts of the decimal number are given
 
-display_num = 0 #will not == first_num when addition/subtraction/etc(operation) is triggered
-first_num = 0
+
 
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption('Pygame Calculator')
@@ -131,6 +136,7 @@ def do_calculation(first_num, second_num,addition,subtraction,multiplication,div
         if division:
             #handle division by zero error here
             first_num = first_num / second_num
+        print(first_num)
         return first_num
         
 while run:
@@ -141,67 +147,36 @@ while run:
     calculator_frame.draw(screen)
     if calculator_button_1.draw(screen):
         print('1 pressed')
-        if display_num == 0:
-            display_num = 1
-        else:
-            display_num = display_num * 10 + 1
+        display_num = display_num * 10 + 1
     if calculator_button_2.draw(screen):
         #can put these lines into its own function with number passed in
         print('2 pressed')
-        if display_num == 0:
-            display_num = 2
-        else:
-            display_num = display_num * 10 + 2
+        display_num = display_num * 10 + 2
     if calculator_button_3.draw(screen):
         print('3 pressed')
-        if display_num == 0:
-            display_num = 3
-        else:
-            display_num = display_num * 10 + 3
+        display_num = display_num * 10 + 3
     if calculator_button_4.draw(screen):
         print('4 pressed')
-        if display_num == 0:
-            display_num = 4
-        else:
-            display_num = display_num * 10 + 4
+        display_num = display_num * 10 + 4
     if calculator_button_5.draw(screen):
         print('5 pressed')
-        if display_num == 0:
-            display_num = 5
-        else:
-            display_num = display_num * 10 + 5
+        display_num = display_num * 10 + 5
     if calculator_button_6.draw(screen):
         print('6 pressed')
-        if display_num == 0:
-            display_num = 6
-        else:
-            display_num = display_num * 10 + 6
+        display_num = display_num * 10 + 6
     if calculator_button_7.draw(screen):
         print('7 pressed')
-        if display_num == 0:
-            display_num = 7
-        else:
-            display_num = display_num * 10 + 7
+        display_num = display_num * 10 + 7
     if calculator_button_8.draw(screen):
         print('8 pressed')
-        if display_num == 0:
-            display_num = 8
-        else:
-            display_num = display_num * 10 + 8
-
+        display_num = display_num * 10 + 8
     if calculator_button_9.draw(screen):
         print('9 pressed')
-        if display_num == 0:
-            display_num = 9
-        else:
-            display_num = display_num * 10 + 9
+        display_num = display_num * 10 + 9
 
     if calculator_button_0.draw(screen):
         print('0 pressed')
-        if display_num == 0:
-            display_num = 0
-        else:
-            display_num = display_num * 10 + 0
+        display_num = display_num * 10 + 0
 
     if calculator_button_16.draw(screen):
         print('Clear pressed')
@@ -210,17 +185,21 @@ while run:
         subtraction = False
         multiplication = False
         division = False
+        equals = False
         first_num = 0
         second_num = 0
 
 
     if calculator_button_10.draw(screen):
         print('Plus pressed')
-        if first_num == 0:
-            first_num = display_num
-        elif second_num == 0:
-            second_num = display_num
-        display_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
+        if not equals:
+            if first_num == 0:
+                first_num = display_num
+            elif second_num == 0:
+                second_num = display_num
+            display_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
+        else:
+            equals = False
         addition = True
         subtraction = False
         multiplication = False
@@ -231,11 +210,14 @@ while run:
 
     if calculator_button_11.draw(screen):
         print('Minus pressed')
-        if first_num == 0:
-            first_num = display_num
-        elif second_num == 0:
-            second_num = display_num
-        display_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
+        if not equals:
+            if first_num == 0:
+                first_num = display_num
+            elif second_num == 0:
+                second_num = display_num
+            display_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
+        else:
+            equals = False
         addition = False
         subtraction = True
         multiplication = False
@@ -245,11 +227,14 @@ while run:
         display_num = 0
     if calculator_button_14.draw(screen):
         print('Times pressed')
-        if first_num == 0:
-            first_num = display_num
-        elif second_num == 0:
-            second_num = display_num
-        display_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
+        if not equals:
+            if first_num == 0:
+                first_num = display_num
+            elif second_num == 0:
+                second_num = display_num
+            display_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
+        else:
+            equals = False
         addition = False
         subtraction = False
         multiplication = True
@@ -260,11 +245,14 @@ while run:
 
     if calculator_button_13.draw(screen):
         print('Divide pressed')
-        if first_num == 0:
-            first_num = display_num
-        elif second_num == 0:
-            second_num = display_num
-        display_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
+        if not equals:
+            if first_num == 0:
+                first_num = display_num
+            elif second_num == 0:
+                second_num = display_num
+            display_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
+        else:
+            equals = False
         addition = False
         subtraction = False
         multiplication = False
@@ -282,6 +270,7 @@ while run:
 
         first_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
         display_num = first_num
+        equals = True
 
     # calculator_button_16.draw(screen)
     # calculator_button_10.draw(screen)
@@ -294,8 +283,6 @@ while run:
 
     draw_text(str(display_num),text_font,(0,0,0),50,10)
     for event in pygame.event.get():
-
-        
         if event.type == pygame.QUIT:
             run = False
     pygame.display.update()
