@@ -120,6 +120,18 @@ def draw_text(text, font, text_color, x, y):
     img = font.render(text, True, text_color)
     screen.blit(img, (x, y))
 
+def do_calculation(first_num, second_num,addition,subtraction,multiplication,division):
+        answer = 0
+        if addition:
+           answer = first_num + second_num
+        if subtraction:
+            answer = first_num - second_num
+        if multiplication:
+            answer = first_num * second_num
+        if division:
+            answer = first_num / second_num
+        return answer
+        
 while run:
     
     screen.fill((202, 228, 241))
@@ -223,18 +235,8 @@ while run:
         if second_num == 0:
             second_num = display_num
 
-        if addition:
-            first_num = first_num + second_num
-            display_num = first_num
-        if subtraction:
-            first_num = first_num - second_num
-            display_num = first_num
-        if multiplication:
-            first_num = first_num * second_num
-            display_num = first_num
-        if division:
-            first_num = first_num / second_num
-            display_num = first_num
+        first_num = do_calculation(first_num, second_num, addition, subtraction, multiplication, division)
+        display_num = first_num
 
     # calculator_button_16.draw(screen)
     # calculator_button_10.draw(screen)
