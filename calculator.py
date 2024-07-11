@@ -13,7 +13,8 @@ division = False
 second_num = 0
 
 #pt 2 slides should be algorithm (continue button placement too)
-#check if no operations are true:
+
+#check if no operations are true (firstnum will be empty):
 # then allow input to first_num and set display num to first_num
 
 #when operation is pressed:
@@ -28,7 +29,7 @@ second_num = 0
 # -allow for input of second num 
 # -operation later will be done on first_num and second_num
 
-#when = button is pressed have operation done with first_num and displaynum (no flags cleared)
+#when = button is pressed have operation done with first_num and secondnum (no flags cleared)
 # -displaynum will be changed to first_num 
 #c button will clear all flags as well as first_num, secondnum and displaynum
 #have operations in seperate functions that are called when buttons are pressed
@@ -120,8 +121,7 @@ def draw_text(text, font, text_color, x, y):
     img = font.render(text, True, text_color)
     screen.blit(img, (x, y))
 
-def do_calculation(first_num, second_num,addition,subtraction,multiplication,division):
-        
+def do_calculation(first_num, second_num,addition,subtraction,multiplication,division):       
         if addition:
            first_num = first_num + second_num
         if subtraction:
@@ -131,7 +131,6 @@ def do_calculation(first_num, second_num,addition,subtraction,multiplication,div
         if division:
             #handle division by zero error here
             first_num = first_num / second_num
-        
         return first_num
         
 while run:
