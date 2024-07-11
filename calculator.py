@@ -12,6 +12,7 @@ multiplication = False
 division = False
 second_num = 0
 
+#pt 2 slides should be algorithm (continue button placement too)
 #check if no operations are true:
 # then allow input to answer and set display num to answer
 
@@ -84,8 +85,33 @@ calculator_button_8 = button.Button(135,300,calculator_button_8_img,2)
 calculator_button_9_img = pygame.image.load('calculator_assets/calculator_button_9.png').convert_alpha()
 calculator_button_9 = button.Button(220,300,calculator_button_9_img,2)
 
+#zero
 calculator_button_0_img = pygame.image.load('calculator_assets/calculator_button_0.png').convert_alpha()
-calculator_button_0 = button.Button(70,400,calculator_button_0_img,2)
+calculator_button_0 = button.Button(50,250,calculator_button_0_img,2)
+
+#clear
+calculator_button_16_img = pygame.image.load('calculator_assets/calculator_button_16.png').convert_alpha()
+calculator_button_16 = button.Button(50,200,calculator_button_16_img,2)
+
+#plus
+calculator_button_10_img = pygame.image.load('calculator_assets/calculator_button_10.png').convert_alpha()
+calculator_button_10 = button.Button(135,200,calculator_button_10_img,2)
+
+#minus
+calculator_button_11_img = pygame.image.load('calculator_assets/calculator_button_11.png').convert_alpha()
+calculator_button_11 = button.Button(220,200,calculator_button_11_img,2)
+
+#times
+calculator_button_14_img = pygame.image.load('calculator_assets/calculator_button_14.png').convert_alpha()
+calculator_button_14 = button.Button(135,250,calculator_button_14_img,2)
+
+#division
+calculator_button_13_img = pygame.image.load('calculator_assets/calculator_button_13.png').convert_alpha()
+calculator_button_13 = button.Button(220,250,calculator_button_13_img,2)
+
+#equals
+calculator_button_12_img = pygame.image.load('calculator_assets/calculator_button_12.png').convert_alpha()
+calculator_button_12 = button.Button(220,150,calculator_button_12_img,2)
 
 text_font = pygame.font.SysFont(None, 70,bold = True, italic=True)
 def draw_text(text, font, text_color, x, y):
@@ -106,6 +132,13 @@ while run:
     calculator_button_6.draw(screen)
     calculator_button_7.draw(screen)
     calculator_button_8.draw(screen)
+    calculator_button_0.draw(screen)
+    calculator_button_16.draw(screen)
+    calculator_button_10.draw(screen)
+    calculator_button_11.draw(screen)
+    calculator_button_14.draw(screen)
+    calculator_button_13.draw(screen)
+    calculator_button_12.draw(screen)
 
     if calculator_button_9.draw(screen):
         print('9 pressed')
