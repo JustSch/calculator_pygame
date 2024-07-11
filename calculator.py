@@ -212,6 +212,7 @@ while run:
         multiplication = False
         division = False
         first_num = 0
+        second_num = 0
 
 
     if calculator_button_10.draw(screen):
