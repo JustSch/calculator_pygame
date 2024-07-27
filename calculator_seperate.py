@@ -1,5 +1,6 @@
 import pygame
 import button
+from load_buttons import LoadButtons
 
 pygame.init()#needed to initialize font
 
@@ -49,77 +50,13 @@ display_num = 0
 # where x begins as 10 then is multiplied by ten as more parts of the decimal number are given
 
 
-
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption('Pygame Calculator')
 
 clock = pygame.time.Clock()
 run = True
 
-calculator_frame_img =  pygame.image.load('calculator_assets/calculator_frame.png').convert_alpha()
-calculator_frame = button.Button(0,2,calculator_frame_img,7)
-
-
-#might not use if text cant be placed on top
-#try to draw text after it 
-#display itself will need to be drawn after the calculator_frame
-calculator_display = pygame.image.load('calculator_assets/calculator_display.png').convert_alpha()
-
-
-calculator_button_1_img = pygame.image.load('calculator_assets/calculator_button_1.png').convert_alpha()
-calculator_button_1 = button.Button(50,400,calculator_button_1_img,2)
-
-calculator_button_2_img = pygame.image.load('calculator_assets/calculator_button_2.png').convert_alpha()
-calculator_button_2 = button.Button(135,400,calculator_button_2_img,2)
-
-calculator_button_3_img = pygame.image.load('calculator_assets/calculator_button_3.png').convert_alpha()
-calculator_button_3 = button.Button(220,400,calculator_button_3_img,2)
-
-calculator_button_4_img = pygame.image.load('calculator_assets/calculator_button_4.png').convert_alpha()
-calculator_button_4 = button.Button(50,350,calculator_button_4_img,2)
-
-calculator_button_5_img = pygame.image.load('calculator_assets/calculator_button_5.png').convert_alpha()
-calculator_button_5 = button.Button(135,350,calculator_button_5_img,2)
-
-calculator_button_6_img = pygame.image.load('calculator_assets/calculator_button_6.png').convert_alpha()
-calculator_button_6 = button.Button(220,350,calculator_button_6_img,2)
-
-calculator_button_7_img = pygame.image.load('calculator_assets/calculator_button_7.png').convert_alpha()
-calculator_button_7 = button.Button(50,300,calculator_button_7_img,2)
-
-calculator_button_8_img = pygame.image.load('calculator_assets/calculator_button_8.png').convert_alpha()
-calculator_button_8 = button.Button(135,300,calculator_button_8_img,2)
-
-calculator_button_9_img = pygame.image.load('calculator_assets/calculator_button_9.png').convert_alpha()
-calculator_button_9 = button.Button(220,300,calculator_button_9_img,2)
-
-#zero
-calculator_button_0_img = pygame.image.load('calculator_assets/calculator_button_0.png').convert_alpha()
-calculator_button_0 = button.Button(50,250,calculator_button_0_img,2)
-
-#clear
-calculator_button_16_img = pygame.image.load('calculator_assets/calculator_button_16.png').convert_alpha()
-calculator_button_16 = button.Button(50,200,calculator_button_16_img,2)
-
-#plus
-calculator_button_10_img = pygame.image.load('calculator_assets/calculator_button_10.png').convert_alpha()
-calculator_button_10 = button.Button(135,200,calculator_button_10_img,2)
-
-#minus
-calculator_button_11_img = pygame.image.load('calculator_assets/calculator_button_11.png').convert_alpha()
-calculator_button_11 = button.Button(220,200,calculator_button_11_img,2)
-
-#times
-calculator_button_14_img = pygame.image.load('calculator_assets/calculator_button_14.png').convert_alpha()
-calculator_button_14 = button.Button(135,250,calculator_button_14_img,2)
-
-#division
-calculator_button_13_img = pygame.image.load('calculator_assets/calculator_button_13.png').convert_alpha()
-calculator_button_13 = button.Button(220,250,calculator_button_13_img,2)
-
-#equals
-calculator_button_12_img = pygame.image.load('calculator_assets/calculator_button_12.png').convert_alpha()
-calculator_button_12 = button.Button(220,150,calculator_button_12_img,2)
+calculator_buttons = LoadButtons(pygame)
 
 text_font = pygame.font.SysFont(None, 70,bold = True, italic=True)
 def draw_text(text, font, text_color, x, y):
@@ -144,42 +81,42 @@ while run:
     screen.fill((202, 228, 241))
     clock.tick(60)
     #do buttons as if statments then dictionary later
-    calculator_frame.draw(screen)
-    if calculator_button_1.draw(screen):
+    calculator_buttons.calculator_frame.draw(screen)
+    if calculator_buttons.calculator_button_1.draw(screen):
         print('1 pressed')
         display_num = display_num * 10 + 1
-    if calculator_button_2.draw(screen):
+    if calculator_buttons.calculator_button_2.draw(screen):
         #can put these lines into its own function with number passed in
         print('2 pressed')
         display_num = display_num * 10 + 2
-    if calculator_button_3.draw(screen):
+    if calculator_buttons.calculator_button_3.draw(screen):
         print('3 pressed')
         display_num = display_num * 10 + 3
-    if calculator_button_4.draw(screen):
+    if calculator_buttons.calculator_button_4.draw(screen):
         print('4 pressed')
         display_num = display_num * 10 + 4
-    if calculator_button_5.draw(screen):
+    if calculator_buttons.calculator_button_5.draw(screen):
         print('5 pressed')
         display_num = display_num * 10 + 5
-    if calculator_button_6.draw(screen):
+    if calculator_buttons.calculator_button_6.draw(screen):
         print('6 pressed')
         display_num = display_num * 10 + 6
-    if calculator_button_7.draw(screen):
+    if calculator_buttons.calculator_button_7.draw(screen):
         print('7 pressed')
         display_num = display_num * 10 + 7
-    if calculator_button_8.draw(screen):
+    if calculator_buttons.calculator_button_8.draw(screen):
         print('8 pressed')
         display_num = display_num * 10 + 8
-    if calculator_button_9.draw(screen):
+    if calculator_buttons.calculator_button_9.draw(screen):
         print('9 pressed')
         display_num = display_num * 10 + 9
 
 
-    if calculator_button_0.draw(screen):
+    if calculator_buttons.calculator_button_0.draw(screen):
         print('0 pressed')
         display_num = display_num * 10 + 0
 
-    if calculator_button_16.draw(screen):
+    if calculator_buttons.calculator_button_16.draw(screen):
         print('Clear pressed')
         display_num = 0
         addition = False
@@ -191,7 +128,7 @@ while run:
         second_num = 0
 
 
-    if calculator_button_10.draw(screen):
+    if calculator_buttons.calculator_button_10.draw(screen):
         print('Plus pressed')
         if not equals:
             if first_num == 0:
@@ -209,7 +146,7 @@ while run:
         second_num = 0
         display_num = 0
 
-    if calculator_button_11.draw(screen):
+    if calculator_buttons.calculator_button_11.draw(screen):
         print('Minus pressed')
         if not equals:
             if first_num == 0:
@@ -226,7 +163,7 @@ while run:
         first_num = display_num
         second_num = 0
         display_num = 0
-    if calculator_button_14.draw(screen):
+    if calculator_buttons.calculator_button_14.draw(screen):
         print('Times pressed')
         if not equals:
             if first_num == 0:
@@ -244,7 +181,7 @@ while run:
         second_num = 0
         display_num = 0
 
-    if calculator_button_13.draw(screen):
+    if calculator_buttons.calculator_button_13.draw(screen):
         print('Divide pressed')
         if not equals:
             if first_num == 0:
@@ -261,7 +198,7 @@ while run:
         first_num = display_num
         second_num = 0
         display_num = 0
-    if calculator_button_12.draw(screen):     
+    if calculator_buttons.calculator_button_12.draw(screen):     
         print('Equals pressed')
         if second_num == 0:
             second_num = display_num
